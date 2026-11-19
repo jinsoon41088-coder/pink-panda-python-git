@@ -92,9 +92,10 @@
 function showHighScore() {
     const display = document.getElementById("high-score-display");
     display.textContent = "🏆 최고 점수: " + highScore + "점";
-    display.style.display = "block";
-}
 
+
+display.style.display = getComputedStyle(display).display === "none" ? "block" : "none";
+}
 
     function showQuiz() {
        document.getElementById("quiz-area").style.display = "block";
