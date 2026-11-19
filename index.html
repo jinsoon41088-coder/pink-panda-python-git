@@ -75,6 +75,8 @@
        
 <button onclick="showHighScore()">4. 🏆 최고 점수 확인</button>
 
+<p id="high-score-display" style="display: none;">🏆 최고 점수: 0점</p>
+
         <button>5. 🚪 퀴즈 종료</button>
     </div>
 
@@ -85,9 +87,13 @@
     let currentQuestion = 1;
     let answered = false;
 
+
 function showHighScore() {
-    alert("🏆 핑크판다 최고 점수: " + highScore + "점");
+    const display = document.getElementById("high-score-display");
+    display.textContent = "🏆 최고 점수: " + highScore + "점";
+    display.style.display = "block";
 }
+
 
     function showQuiz() {
        document.getElementById("quiz-area").style.display = "block";
