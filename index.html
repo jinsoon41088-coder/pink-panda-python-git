@@ -70,9 +70,10 @@
     <button id="home-button" onclick="goHome()" style="display: none;">🏠 메인 메뉴로 돌아가기</button>
 
 </div>
-        <button>2. ➕ 퀴즈 추가</button>
-        <button>3. 📋 추가한 퀴즈 목록</button>
-       
+
+<button onclick="showAddQuiz()">2. ➕ 퀴즈 추가</button>
+<button onclick="showAddedQuizzes()">3. 📋 추가한 퀴즈 목록</button>
+         
 <button onclick="showHighScore()">4. 🏆 최고 점수 확인</button>
 
 
@@ -81,6 +82,24 @@
         <button>5. 🚪 퀴즈 종료</button>
     </div>
 
+<div id="add-quiz-area" class="game" style="display: none;">
+    <h2>🐼 새로운 퀴즈 추가하기</h2>
+    <input id="new-question" type="text" placeholder="퀴즈 문제를 입력하세요"><br>
+    <input id="new-option1" type="text" placeholder="1번 보기"><br>
+    <input id="new-option2" type="text" placeholder="2번 보기"><br>
+    <input id="new-option3" type="text" placeholder="3번 보기"><br>
+    <input id="new-option4" type="text" placeholder="4번 보기"><br>
+    <input id="new-answer" type="number" min="1" max="4" placeholder="정답 번호 (1~4)"><br>
+    <button onclick="saveNewQuiz()">💾 퀴즈 저장하기</button>
+    <button onclick="goHome()">🏠 홈으로 돌아가기</button>
+</div>
+ 
+<div id="added-quiz-list-area" class="game" style="display: none;">
+    <h2>🐼 내가 추가한 퀴즈 목록</h2>
+    <div id="added-quiz-list"></div>
+    <button onclick="goHome()">🏠 홈으로 돌아가기</button>
+</div>
+   
 <script>
     let quizzes = [];
     let score = 0;
@@ -97,6 +116,75 @@ function showHighScore() {
 display.style.display = getComputedStyle(display).display === "none" ? "block" : "none";
 }
 
+function showAddQuiz() {
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("add-quiz-area").style.display = "block";
+}
+
+function saveNewQuiz() {
+    const question = document.getElementById("new-question").value.trim();
+
+    const options = [
+        document.getElementById("new-option1").value.trim(),
+        document.getElementById("new-option2").value.trim(),
+        document.getElementById("new-option3").value.trim(),
+        document.getElementById("new-option4").value.trim()
+    ];
+
+    const answer = Number(document.getElementById("new-answer").value);
+
+    if (!question || options.some(option => !option)) {
+        alert("문제와 보기 4개를 모두 입력해 주세요!");
+        return;
+    }
+
+    if (!Number.isInteger(answer) || answer < 1 || answer > 4) {
+        alert("정답 번호는 1부터 4까지 입력해 주세요!");
+        return;
+    }
+
+    const newQuiz = { question, options, answer };
+
+    const savedQuizzes = JSON.parse(
+        localStorage.getItem("pinkPandaAddedQuizzes") || "[]"
+    );
+
+    savedQuizzes.push(newQuiz);
+
+    localStorage.setItem(
+        "pinkPandaAddedQuizzes",
+        JSON.stringify(savedQuizzes)
+    );
+
+    alert("🐼 새로운 퀴즈가 저장되었습니다!");
+    
+}
+
+function showAddedQuizzes() {
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("added-quiz-list-area").style.display = "block";
+
+    const savedQuizzes = JSON.parse(
+        localStorage.getItem("pinkPandaAddedQuizzes") || "[]"
+    );
+
+    const list = document.getElementById("added-quiz-list");
+    list.replaceChildren();
+
+    if (savedQuizzes.length === 0) {
+        list.textContent = "아직 추가한 퀴즈가 없습니다.";
+        return;
+    }
+
+    savedQuizzes.forEach((quiz, index) => {
+        const item = document.createElement("p");
+        item.textContent = (index + 1) + ". " + quiz.question;
+        list.appendChild(item);
+    });
+}
+  
+  
+  
     function showQuiz() {
        document.getElementById("quiz-area").style.display = "block";
     }
@@ -196,8 +284,13 @@ async function loadQuizzes() {
         }
 
         const data = await response.json();
-        quizzes = data.quizzes;
-        displayQuestion();
+
+const addedQuizzes = JSON.parse(
+    localStorage.getItem("pinkPandaAddedQuizzes") || "[]"
+);
+
+quizzes = [...data.quizzes, ...addedQuizzes];
+          displayQuestion();
         document.getElementById("quiz-question").textContent = quizzes[0].question;
 
 const optionButtons = document.querySelectorAll("#quiz-options button");
@@ -215,11 +308,15 @@ quizzes[0].options.forEach(function(option, index) {
 
 loadQuizzes();
 
+
 function goHome() {
     document.getElementById("quiz-area").style.display = "none";
     document.getElementById("home-button").style.display = "none";
+    document.getElementById("add-quiz-area").style.display = "none";
+    document.getElementById("added-quiz-list-area").style.display = "none";
+    document.getElementById("menu").style.display = "block";
 }
-
+  
 </script>
 
 </body>
