@@ -45,7 +45,8 @@
     </style>
 </head>
 <body>
-    <div class="game">
+
+<div class="game" id="menu">
         <h1>🐼 핑크판다 퀴즈 게임 🐼</h1>
         <p>나만의 퀴즈 게임에 오신 것을 환영합니다!</p>
 
@@ -66,18 +67,28 @@
 
     <p id="quiz-result"></p>
     <button id="next-button" onclick="nextQuestion()" style="display: none;">➡️ 다음 문제</button>
+    <button id="home-button" onclick="goHome()" style="display: none;">🏠 메인 메뉴로 돌아가기</button>
+
 </div>
         <button>2. ➕ 퀴즈 추가</button>
         <button>3. 📋 추가한 퀴즈 목록</button>
-        <button>4. 🏆 최고 점수 확인</button>
+       
+<button onclick="showHighScore()">4. 🏆 최고 점수 확인</button>
+
         <button>5. 🚪 퀴즈 종료</button>
     </div>
 
 <script>
     let quizzes = [];
     let score = 0;
+    let highScore = Number(localStorage.getItem("pinkPandaHighScore")) || 0;
     let currentQuestion = 1;
     let answered = false;
+
+function showHighScore() {
+    alert("🏆 핑크판다 최고 점수: " + highScore + "점");
+}
+
     function showQuiz() {
        document.getElementById("quiz-area").style.display = "block";
     }
@@ -118,10 +129,19 @@ document.getElementById("quiz-hint").style.display = "none";
 document.getElementById("quiz-hint").textContent = "";
 
     if (currentQuestion > quizzes.length) {
+
+if (score > highScore) {
+    highScore = score;
+    localStorage.setItem("pinkPandaHighScore", highScore);
+}
+
         document.getElementById("quiz-question").textContent =
             "🐼 퀴즈 완료! 최종 점수: " + score + "점";
 
         document.getElementById("quiz-options").style.display = "none";
+
+document.getElementById("home-button").style.display = "block";
+
         return;
     }
 
@@ -186,6 +206,11 @@ quizzes[0].options.forEach(function(option, index) {
 }
 
 loadQuizzes();
+
+function goHome() {
+    document.getElementById("quiz-area").style.display = "none";
+    document.getElementById("home-button").style.display = "none";
+}
 
 </script>
 
