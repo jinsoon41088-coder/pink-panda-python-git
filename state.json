@@ -1,3 +1,95 @@
 {
-    "high_score": 140
+    "high_score": 180,
+    "quizzes": [
+        {
+            "question": "Python에서 화면에 글자를 출력하는 함수는?",
+            "options": [
+                "input()",
+                "print()",
+                "len()",
+                "type()"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "Python에서 사용자 입력을 받는 함수는?",
+            "options": [
+                "print()",
+                "len()",
+                "input()",
+                "type()"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "문자열의 길이를 구하는 함수는?",
+            "options": [
+                "print()",
+                "input()",
+                "type()",
+                "len()"
+            ],
+            "answer": 4
+        },
+        {
+            "question": "Python에서 정수를 나타내는 자료형은?",
+            "options": [
+                "str",
+                "float",
+                "int",
+                "bool"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "반복 작업에 사용하는 키워드는?",
+            "options": [
+                "if",
+                "for",
+                "def",
+                "return"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "대한민국의 수도는?",
+            "options": [
+                "경주",
+                "부산",
+                "창원",
+                "서울"
+            ],
+            "answer": 4
+        },
+        {
+            "question": "스마트폰 화면에 갑자기 수상한 광고 창이 뜨거나 악성 앱이 깔렸을 때, 가장 올바른 대처 방법은?",
+            "options": [
+                "스마트 폰 전원을 껐다 켜면 악성 앱이 자동으로 완전히 삭제된다.",
+                "스마트 폰 설정을 초기화(공장초기화)해야만 해결 할 수 있다.",
+                "스마트 폰의 [설정] ▶[애플리케이션] 메뉴에서 의심스로운 앱을 찾아 삭제한다.\t",
+                "전용 백신 앱을 켜고 '스마트 폰 흔들기'기능을 실행한다."
+            ],
+            "answer": 3
+        },
+        {
+            "question": "판다가 먹는 음식이 아닌것은?",
+            "options": [
+                "대나무",
+                "당근",
+                "사과",
+                "양배추"
+            ],
+            "answer": 4
+        },
+        {
+            "question": "다음 보기 중에서 네 발 달린 동물이 아닌것은",
+            "options": [
+                "강아지",
+                "고양이",
+                "사람",
+                "고슴도치"
+            ],
+            "answer": 3
+        }
+    ]
 }
