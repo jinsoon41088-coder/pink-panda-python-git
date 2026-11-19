@@ -1,6 +1,6 @@
 # pink-panda-python-mission
 컴퓨터에게 명령 내리는 말(파이썬) 처음 배우기
-
+![파이썬 기초 학습](lecture2_banner.pnglecture2_banner.png)
 ## 🐼 프로젝트 소개
 
 핑크판다 파이썬 퀴즈 게임은 Python 기초 문법을 활용하여 직접 제작한 퀴즈 프로그램입니다.
@@ -38,4 +38,3 @@
 # pink-panda-python-git
 컴퓨터에게 명령 내리는 말(파이썬) 처음 배우기
 
-![파이썬 기초 학습](lecture2_banner.pnglecture2_banner.png)
