@@ -75,6 +75,16 @@ quiz_objects = [
     fifth_quiz
 ]
 
+with open("questions.json", "r", encoding="utf-8-sig") as file:
+    saved_questions = json.load(file)
+for question_data in saved_questions:
+    quiz_objects.append(
+        Quiz(
+            question_data["question"],
+            question_data["options"],
+            question_data["answer"]
+        )
+    )
 class QuizGame:
     def __init__(self):
         self.score = 0
@@ -128,7 +138,41 @@ while True:
     print("5. 종료")
     print("=" * 40)
     menu_choice = input("메뉴 번호를 입력하세요 (1~5): ")
-    if menu_choice == "3":
+    if menu_choice == "1":
+        print("🐼 퀴즈 풀기를 시작합니다! 💗")
+        print(quiz_objects[0].question)
+        for number, option in enumerate(quiz_objects[0].options, start=1):
+            print(f"{number}. {option}")
+        user_answer = input("정답 번호를 입력하세요 (1~4): ")
+        if user_answer == str(quiz_objects[0].answer):
+            print("🎉 정답입니다! 참 잘했어요! 🐼💗")
+        else:
+            print("❌ 아쉬워요! 오답입니다. 다음에는 맞힐 수 있어요! 💗")
+    elif menu_choice == "2":
+        print("🐼 새로운 퀴즈를 추가합니다! 💗")
+        new_question = input("새로운 퀴즈 질문을 입력하세요: ") 
+        option1 = input("1번 보기를 입력하세요: ")
+        option2 = input("2번 보기를 입력하세요: ")
+        option3 = input("3번 보기를 입력하세요: ")
+        option4 = input("4번 보기를 입력하세요: ")
+        new_answer = int(input("정답 번호를 입력하세요 (1~4): "))
+        new_quiz = Quiz(new_question, [option1, option2, option3, option4], new_answer)        
+        quiz_objects.append(new_quiz)
+        new_quiz_data = {
+            "question": new_question,
+            "options": [option1, option2, option3, option4],
+            "answer": new_answer
+        }
+        with open("questions.json", "r", encoding="utf-8-sig") as file:            
+            saved_questions = json.load(file)
+             
+        saved_questions.append(new_quiz_data)
+
+        with open("questions.json", "w", encoding="utf-8") as file:
+            json.dump(saved_questions, file, ensure_ascii=False, indent=4)
+            
+        print("🎉 새로운 퀴즈가 추가되었습니다! 🐼💗")    
+    elif menu_choice == "3":
         print("📋 핑크판다 퀴즈 목록 🐼")
         for number, quiz in enumerate(quiz_objects, start=1):
             print(f"{number}. {quiz.question}")
