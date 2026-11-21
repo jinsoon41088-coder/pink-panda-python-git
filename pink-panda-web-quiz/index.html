@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>핑크판다 퀴즈 게임</title>
+
+    <style>
+        body {
+            background-color: #fff0f6;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px 15px;
+        }
+
+        h1 {
+            color: #e75480;
+        }
+
+        .menu {
+            background-color: white;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px #f5c6d6;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0;
+            background-color: #ff80ab;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ec407a;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🐼 핑크판다 퀴즈 게임 💗</h1>
+    <p>즐겁게 파이썬 퀴즈를 풀어보세요!</p>
+
+
+<div class="menu" id="main-menu">
+        <h2>🏠 메인메뉴</h2>
+
+
+<button id="start-button">🎮 1. 퀴즈 풀기</button>
+
+<button id="add-quiz-button">✏️ 2. 퀴즈 추가</button>
+
+<button id="quiz-list-button">📋 3. 퀴즈 목록</button>
+
+<button id="high-score-button">🏆 4. 최고 점수 확인</button>
+        <button>🚪 5. 종료</button>
+    </div>
+
+<div class="menu" id="quiz-screen" style="display: none;">
+    <h2>🎮 파이썬 퀴즈 풀기</h2>
+
+    <p id="score-display">🏆 현재 점수: 0점</p>
+
+    <p id="question-number"></p>
+    <h3 id="question-text"></h3>
+
+    <div id="answer-options"></div>
+
+    <p id="quiz-hint" style="display: none;"></p>
+    <p id="quiz-result"></p>
+
+    <button id="hint-button">💡 힌트 보기</button>
+    <button id="next-button">➡️ 다음 문제</button>
+    <button id="home-button">🏠 메인메뉴로 돌아가기</button>
+</div>
+
+<div class="menu" id="high-score-screen" style="display: none;">
+    <h2>🏆 최고 점수 확인</h2>
+
+    <p>🐼 지금까지 기록한 최고 점수예요!</p>
+
+    <h1 id="high-score-display">0점</h1>
+
+    <button id="high-score-home-button">
+        🏠 메인메뉴로 돌아가기
+    </button>
+</div>
+
+<div class="menu" id="add-quiz-screen" style="display: none;">
+    <h2>✏️ 새로운 퀴즈 추가</h2>
+
+    <input id="new-question" placeholder="퀴즈 문제 입력">
+
+    <input id="new-option1" placeholder="1번 보기">
+    <input id="new-option2" placeholder="2번 보기">
+    <input id="new-option3" placeholder="3번 보기">
+    <input id="new-option4" placeholder="4번 보기">
+
+    <input id="new-answer" type="number"
+           min="1" max="4" placeholder="정답 번호 (1~4)">
+
+    <input id="new-hint" placeholder="힌트 입력">
+
+    <button id="save-quiz-button">
+        💾 퀴즈 저장하기
+    </button>
+
+    <p id="add-quiz-message"></p>
+
+    <button id="add-quiz-home-button">
+        🏠 메인메뉴로 돌아가기
+    </button>
+</div>
+
+<div class="menu" id="quiz-list-screen" style="display: none;">
+    <h2>📋 전체 퀴즈 목록</h2>
+
+    <p>🐼 지금까지 등록된 퀴즈를 확인해 보세요!</p>
+
+
+
+<p id="quiz-count" style="color: #e75480; font-weight: bold; font-size: 20px; text-align: center;">📚 전체 퀴즈: 0문제</p>
+
+    <div id="quiz-list-container"></div>
+
+    <button id="quiz-list-home-button">
+        🏠 메인메뉴로 돌아가기
+    </button>
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
