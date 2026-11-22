@@ -56,7 +56,35 @@ const quizzes = [
         hint: "같은 작업을 여러 번 반복할 때 사용하는 세 글자 키워드를 생각해 보세요."
     }
 ];
+function playCorrectSound() {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();   
+    const oscillator = audioContext.createOscillator();
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(880, audioContext.currentTime);
+    const gainNode = audioContext.createGain();
+    gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.3);
+}
 
+
+function playWrongSound() {
+
+   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+   const oscillator = audioContext.createOscillator();
+   oscillator.type = "triangle";
+   oscillator.frequency.setValueAtTime(220, audioContext.currentTime);
+   const gainNode = audioContext.createGain();
+   gainNode.gain.setValueAtTime(0.12, audioContext.currentTime);
+   gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+   oscillator.connect(gainNode);
+   gainNode.connect(audioContext.destination);
+   oscillator.start();
+   oscillator.stop(audioContext.currentTime + 0.3);
+}
 const storedQuizzes = JSON.parse(
     localStorage.getItem("pinkPandaSavedQuizzes") || "[]"
 );
@@ -117,7 +145,7 @@ document.getElementById("quiz-progress").textContent = "🐼 퀴즈 진행률: "
 
 button.addEventListener("click", function() {
     if (answered) {
-        retuern;
+        return;
     }
 
     answered = true;
@@ -125,6 +153,7 @@ button.addEventListener("click", function() {
 
     if (index + 1 === question.answer) {
         score += 10;
+        playCorrectSound();
 
 if (score > highScore) {
     highScore = score;
@@ -136,6 +165,7 @@ document.getElementById("score-display").textContent =
         resultElement.textContent = "🎉 정답입니다!";
         resultElement.style.color = "green";
     } else {
+        playWrongSound();
         resultElement.textContent = "❌ 오답입니다!";
         resultElement.style.color = "red";
     }
