@@ -91,7 +91,13 @@ let highScore = Number(localStorage.getItem("pinkPandaHighScore")) || 0;
 let answered = false;
 function showQuestion() {
     answered = false;
-    const question = quizzes[currentQuestion];
+const question = quizzes[currentQuestion];
+
+const progressPercent = Math.round(((currentQuestion + 1) / questionLimit) * 100);
+
+document.getElementById("quiz-progress-bar").value = progressPercent;
+
+document.getElementById("quiz-progress").textContent = "🐼 퀴즈 진행률: " + progressPercent + "%";
 
     document.getElementById("question-number").textContent =
         "📝 " + (currentQuestion + 1) + "번 문제";
@@ -150,7 +156,7 @@ document.getElementById("hint-button").addEventListener("click", function() {
 });
 
 document.getElementById("next-button").addEventListener("click", function() {
-if (currentQuestion < questionLimit - 1) {        currentQuestion++;
+    if (currentQuestion < questionLimit - 1) {        currentQuestion++;
 
         showQuestion();
 

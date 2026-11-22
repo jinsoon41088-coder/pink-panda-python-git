@@ -43,6 +43,14 @@
         button:hover {
             background-color: #ec407a;
         }
+
+#quiz-progress-bar {
+    width: 100%;
+    height: 20px;
+    accent-color: #ff80ab;
+    margin: 10px 0;
+}
+
     </style>
 </head>
 
@@ -76,6 +84,11 @@
     <p id="score-display">🏆 현재 점수: 0점</p>
 
     <p id="question-number"></p>
+
+    <p id="quiz-progress">🐼 퀴즈 진행률: 0%</p>
+
+    <progress id="quiz-progress-bar" value="0" max="100"></progress>
+
     <h3 id="question-text"></h3>
 
     <div id="answer-options"></div>
