@@ -65,6 +65,7 @@ quizzes.push(...storedQuizzes);
 
 
 document.getElementById("start-button").addEventListener("click", function() {
+    quizzes.sort(() => Math.random() - 0.5);
     currentQuestion = 0;
     score = 0;
 
