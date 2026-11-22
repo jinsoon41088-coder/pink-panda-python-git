@@ -66,7 +66,8 @@ quizzes.push(...storedQuizzes);
 
 document.getElementById("start-button").addEventListener("click", function() {
     quizzes.sort(() => Math.random() - 0.5);
-    currentQuestion = 0;
+    const selectedCount = document.getElementById("question-count").value;
+questionLimit = selectedCount === "all" ? quizzes.length : Math.min(Number(selectedCount), quizzes.length);    currentQuestion = 0;
     score = 0;
 
 document.getElementById("next-button").style.display = "block";
@@ -84,6 +85,7 @@ document.getElementById("score-display").textContent = "🏆 현재 점수: 0점
 
 
 let currentQuestion = 0;
+let questionLimit = 5;
 let score = 0;
 let highScore = Number(localStorage.getItem("pinkPandaHighScore")) || 0;
 let answered = false;
@@ -148,8 +150,7 @@ document.getElementById("hint-button").addEventListener("click", function() {
 });
 
 document.getElementById("next-button").addEventListener("click", function() {
-    if (currentQuestion < quizzes.length - 1) {
-        currentQuestion++;
+if (currentQuestion < questionLimit - 1) {        currentQuestion++;
 
         showQuestion();
 
