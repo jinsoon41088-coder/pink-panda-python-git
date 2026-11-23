@@ -63,3 +63,19 @@
 - 🏆 최고 점수: 180점
 - 💾 점수 저장 파일: state.json
 - ✅ 프로그램 종료 후에도 최고 점수 유지
+
+## 📸 네이토 파이썬 미션 구현 화면
+
+![Python 클래스 코드](screenshots/01-python-class.png)
+
+### 2. 퀴즈 기능 구현
+
+![퀴즈 기능 코드](screenshots/02-quiz-function.png)
+
+### 3. 파이썬 퀴즈 게임 실행 결과
+
+![퀴즈 실행 결과 140점](screenshots/03-quiz-result-140.png)
+
+### 4. JSON 최고 점수 저장
+
+![JSON 최고 점수 저장 화면](screenshots/04-high-score-json.png)
