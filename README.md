@@ -79,3 +79,5 @@
 ### 4. JSON 최고 점수 저장
 
 ![JSON 최고 점수 저장 화면](screenshots/04-high-score-json.png)
+
+clone과 pull 실습용으로 추가한 문장입니다.
