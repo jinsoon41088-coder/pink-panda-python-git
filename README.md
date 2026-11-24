@@ -1,81 +1,115 @@
-# pink-panda-python-mission
-컴퓨터에게 명령 내리는 말(파이썬) 처음 배우기
-![파이썬 기초 학습](lecture2_banner.pnglecture2_banner.png)
-## 🐼 프로젝트 소개
+# 🐼 핑크판다 파이썬 퀴즈 게임
 
-핑크판다 파이썬 퀴즈 게임은 Python 기초 문법을 활용하여 직접 제작한 퀴즈 프로그램입니다.
+컴퓨터에게 명령 내리는 말(파이썬) 처음 배우기 미션
 
-### 주요 기능
-- 퀴즈 풀기
-- 새로운 퀴즈 추가
-- 퀴즈 목록 확인
-- 최고 점수 확인
-- JSON 파일을 이용한 문제 및 최고 점수 저장
-- Quiz와 QuizGame 클래스를 활용한 객체 지향 프로그래밍
+## 📌 프로젝트 개요
 
-### 개발 환경
-- OS: Windows 11
-- Editor: Visual Studio Code
-- Language: Python
-- Data: JSON
-- Version Control: Git / GitHub
+터미널에서 동작하는 **나만의 퀴즈 게임**입니다.
+Python 기본 문법으로 입력/출력 흐름을 만들고, `Quiz`, `QuizGame` 클래스로 코드를 역할별로 나눴습니다.
+퀴즈와 최고 점수는 `state.json`에 저장해서, 프로그램을 종료하고 다시 실행해도 유지됩니다.
+Git으로 기능 단위 커밋과 브랜치 작업을 하고, GitHub에 공개했습니다.
 
----
+## 🎯 퀴즈 주제 선정 이유
 
-## 📸 개발 과정 및 실행 결과
+✏️ python과 일반상식 퀴즈 문제를 선택한 이유는 python은 내가 처음 접해보고있어서 퀴즈로 얼마나 알고 있는지 확인을 해보고 싶었고 일반상식은 누구나 알고 있는거지만 그래도 더 잘 알고 싶어서 퀴즈 주제로 선정을 하게 되었습니다.
 
-### 1. Python 클래스 작성
-![Python 클래스](screenshots/01-python-class.png)
+## 🚀 실행 방법
 
-### 2. 퀴즈 진행 코드
-![퀴즈 진행 코드](screenshots/02-quiz-function.png)
+Python 3.10 이상이 필요하고, 외부 라이브러리는 필요 없습니다.
 
-### 3. 퀴즈 실행 결과 - 140점
-![퀴즈 실행 결과](screenshots/03-quiz-result-140.png)
+```bash
+git clone https://github.com/jinsoon41088-coder/pink-panda-python-git.git
+cd pink-panda-python-git
+python main.py
+```
 
-### 4. 최고 점수 JSON 저장
-![최고 점수 저장](screenshots/04-high-score-json.png)
-# pink-panda-python-git
-컴퓨터에게 명령 내리는 말(파이썬) 처음 배우기
+## ✨ 기능 목록
 
-## 🐼 핑크판다 파이썬 퀴즈 게임 메뉴
-### 🎮 게임 메뉴
+| 메뉴 | 기능 |
+|---|---|
+| 1. 퀴즈 풀기 | 저장된 퀴즈를 차례로 출제하고, 정답/오답과 결과 점수를 보여줍니다. |
+| 2. 퀴즈 추가 | 문제, 선택지 4개, 정답 번호를 입력해 새 퀴즈를 등록하고 파일에 저장합니다. |
+| 3. 퀴즈 목록 | 등록된 퀴즈 목록을 보여줍니다. |
+| 4. 점수 확인 | 최고 점수를 보여줍니다. 퀴즈를 풀 때마다 비교해서 갱신합니다. |
+| 5. 종료 | 프로그램을 종료합니다. |
 
-1. 📝 파이썬 퀴즈 풀기
-2. ➕ 퀴즈 추가
-3. 📋 추가한 퀴즈 목록
-4. 🏆 최고 점수 확인
-5. 🚪 퀴즈 종료
-### 📋 등록된 퀴즈 목록 (총 9문제)
+**입력/예외 처리**
+- 입력 앞뒤 공백을 제거합니다.
+- 빈 입력, 숫자가 아닌 입력(`abc`), 범위 밖 숫자(`9`)는 안내 메시지 후 다시 입력받습니다.
+- `Ctrl+C`, 입력 종료(EOF)가 발생해도 비정상 종료하지 않고 저장 후 종료합니다.
+- `state.json`이 없으면 기본 퀴즈로 시작하고, 손상되었으면 안내 후 기본 데이터로 복구합니다.
+- 퀴즈가 없을 때, 아직 퀴즈를 풀지 않았을 때도 안내 메시지를 보여줍니다.
 
-1. Python에서 화면에 글자를 출력하는 함수는?
-2. Python에서 사용자 입력을 받는 함수는?
-3. 문자열의 길이를 구하는 함수는?
-4. Python에서 정수를 나타내는 자료형은?
-5. 반복 작업에 사용하는 키워드는?
-6. 대한민국의 수도는?
-7. 스마트폰에 수상한 광고나 악성 앱이 나타났을 때 올바른 대처 방법은?
-8. 판다가 먹는 음식이 아닌 것은?
-9. 다음 보기 중에서 네 발 달린 동물이 아닌 것은?
-### 🏆 핑크판다 퀴즈 최고 점수
+## 🗂 파일 구조
 
-- 🎯 등록된 퀴즈: 9문제
-- 🏆 최고 점수: 180점
-- 💾 점수 저장 파일: state.json
-- ✅ 프로그램 종료 후에도 최고 점수 유지
+```
+pink-panda-python-git/
+├── main.py          # 게임 프로그램 (Quiz, QuizGame 클래스)
+├── state.json       # 퀴즈 목록과 최고 점수 저장 파일
+├── README.md        # 프로젝트 설명
+├── .gitignore
+└── screenshots/     # 실행 화면 스크린샷
+```
 
-## 📸 네이토 파이썬 미션 구현 화면
+**클래스 구조**
+- `Quiz`: 문제 한 개를 표현합니다. 문제 출력(`display`), 정답 확인(`is_correct`), 저장용 변환(`to_dict`, `from_dict`)을 담당합니다.
+- `QuizGame`: 게임 전체를 관리합니다. 메뉴 표시, 퀴즈 풀기, 퀴즈 추가, 목록 보기, 점수 확인, 파일 저장/불러오기, 입력 처리를 메서드로 나눴습니다.
 
-![Python 클래스 코드](screenshots/01-python-class.png)
+## 💾 데이터 파일 (`state.json`)
 
-### 2. 퀴즈 기능 구현
+- **경로**: 프로젝트 루트의 `state.json` (UTF-8)
+- **역할**: 퀴즈 목록과 최고 점수를 저장해서 프로그램을 다시 실행해도 유지합니다.
 
-![퀴즈 기능 코드](screenshots/02-quiz-function.png)
+| 키 | 형식 | 설명 |
+|---|---|---|
+| `high_score` | 정수 | 최고 점수 (정답 1문제당 20점) |
+| `quizzes` | 리스트 | 퀴즈 목록 |
+| `question` | 문자열 | 문제 |
+| `options` | 문자열 4개의 리스트 | 선택지 |
+| `answer` | 정수 (1~4) | 정답 번호 |
 
-### 3. 파이썬 퀴즈 게임 실행 결과
+```json
+{
+    "high_score": 180,
+    "quizzes": [
+        {
+            "question": "Python에서 정수를 나타내는 자료형은?",
+            "options": ["str", "float", "int", "bool"],
+            "answer": 3
+        }
+    ]
+}
+```
 
-![퀴즈 실행 결과 140점](screenshots/03-quiz-result-140.png)
+## 📸 실행 화면
 
-### 4. JSON 최고 점수 저장
+**메뉴와 잘못된 입력 처리**
 
-![JSON 최고 점수 저장 화면](screenshots/04-high-score-json.png)
+![메뉴](screenshots/05-menu.png)
+
+**퀴즈 풀기**
+
+![퀴즈 풀기](screenshots/06-play-01.png)
+
+**퀴즈 풀기 결과**
+
+![결과](screenshots/06-play-result.png)
+
+**퀴즈 추가**
+
+![퀴즈 추가](screenshots/07-add-quiz.png)
+
+**퀴즈 목록**
+
+![퀴즈 목록](screenshots/08-list.png)
+
+**점수 확인**
+
+![점수 확인](screenshots/09-score.png)
+
+## 🔧 Git 사용 기록
+
+- `init`, `add`, `commit`, `push`로 기능 단위 커밋을 만들었습니다.
+- `feature/input-validation` 브랜치에서 입력 검증과 구조 개선을 작업한 뒤 `checkout`, `merge`로 `main`에 병합했습니다.
+- `clone`, `pull`로 저장소 복제와 변경사항 가져오기를 실습했습니다.
+clone과 pull 실습용으로 추가한 문장입니다.
