@@ -102,7 +102,7 @@ class QuizGame:
                 raise ValueError("최고 점수가 숫자가 아닙니다.")
             self.quizzes = quizzes
             self.high_score = high_score
-            self.has_played = high_score > 0
+            self.has_played = state.get("has_played", high_score > 0)
             print(
                 f"📂 저장된 데이터를 불러왔습니다. "
                 f"(퀴즈 {len(self.quizzes)}개, 최고점수 {self.high_score}점)"
@@ -126,8 +126,10 @@ class QuizGame:
         """퀴즈와 최고 점수를 state.json에 저장한다."""
         state = {
             "high_score": self.high_score,
+            "has_played": self.has_played,
             "quizzes": [quiz.to_dict() for quiz in self.quizzes],
         }
+           
         try:
             with open(self.state_file, "w", encoding="utf-8") as file:
                 json.dump(state, file, ensure_ascii=False, indent=4)
