@@ -2,10 +2,6 @@
 
 컴퓨터에게 명령 내리는 말(파이썬) 처음 배우기 미션
 
-# 🐼 핑크판다 파이썬 퀴즈 게임
-
-컴퓨터에게 명령 내리는 말(파이썬) 처음 배우기 미션
-
 <p align="center">
   <img src="screenshots/pink-panda-python-mission.png" width="800" alt="핑크판다 파이썬 미션 설명">
 </p>
