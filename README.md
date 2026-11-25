@@ -113,7 +113,10 @@ pink-panda-python-git/
 
 ## 🔧 Git 사용 기록
 
-- `init`, `add`, `commit`, `push`로 기능 단위 커밋을 만들었습니다.
-- `feature/input-validation` 브랜치에서 입력 검증과 구조 개선을 작업한 뒤 `checkout`, `merge`로 `main`에 병합했습니다.
-- `clone`, `pull`로 저장소 복제와 변경사항 가져오기를 실습했습니다.
-clone과 pull 실습용으로 추가한 문장입니다.
+
+- `init`, `add`, `commit`, `push`를 사용하여 기능 단위로 작업 내용을 기록했습니다.
+- `feature/input-validation` 브랜치에서 입력 검증과 구조 개선을 진행한 뒤 `main`에 병합했습니다.
+- `feature/quiz-test-report` 브랜치를 생성하여 테스트 결과 문서(`QUIZ_TEST_REPORT.md`)를 작성하고 `main`에 병합했습니다.
+- `git clone`으로 GitHub 저장소를 별도 폴더에 복제하는 실습을 완료했습니다.
+- 복제한 프로젝트에서 `CLONE_TEST.txt` 파일을 생성하고 `git add`, `git commit`, `git push`를 실행했습니다.
+- `git pull`을 실행하여 GitHub 원격 저장소의 변경 사항을 가져오는 실습을 완료했습니다.
