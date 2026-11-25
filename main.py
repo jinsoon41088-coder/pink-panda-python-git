@@ -138,8 +138,10 @@ class QuizGame:
         try:
             with open(self.state_file, "w", encoding="utf-8") as file:
                 json.dump(state, file, ensure_ascii=False, indent=4)
+            return True
         except OSError as error:
             print(f"⚠️ 파일 저장에 실패했습니다. ({error})")
+            return False
 
     # ---------- 입력 처리 ----------
     def read_text(self, prompt):
@@ -217,8 +219,11 @@ class QuizGame:
         answer = self.read_number("정답 번호 (1-4): ", 1, 4)
 
         self.quizzes.append(Quiz(question, options, answer))
-        self.save_state()
-        print("\n✅ 퀴즈가 추가되었습니다!")
+        if self.save_state():
+            print("\n✅ 퀴즈가 추가되었습니다!")
+        else:
+            self.quizzes.pop()
+            print("\n⚠️ 저장 실패로 퀴즈 추가를 취소했습니다.")
 
     def list_quizzes(self):
         if not self.quizzes:
