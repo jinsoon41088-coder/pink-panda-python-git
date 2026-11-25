@@ -1,6 +1,22 @@
 # pink-panda-python-mission
 컴퓨터에게 명령 내리는 말(파이썬) 처음 배우기
-![파이썬 기초 학습](lecture2_banner.pnglecture2_banner.png)
+## 🐼 Python 학습 핵심 이미지
+
+### 1. 파이썬의 기초
+
+![파이썬의 기초](<screenshots/파이썬의 기초.png>)
+
+### 2. 클래스와 객체
+
+![클래스와 객체](<screenshots/클래스와 객체.png>)
+
+### 3. 파일 입출력과 JSON
+
+![파일 입출력과 JSON](<screenshots/파일 입출력과 json.png>)
+
+### 4. 깃 기초
+
+![깃 기초](<screenshots/깃 기초.png>)
 ## 🐼 프로젝트 소개
 
 핑크판다 파이썬 퀴즈 게임은 Python 기초 문법을 활용하여 직접 제작한 퀴즈 프로그램입니다.
