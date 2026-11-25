@@ -71,7 +71,9 @@ class Quiz:
             raise ValueError("문제가 비어 있습니다.")
         if not isinstance(options, list) or len(options) != 4:
             raise ValueError("선택지는 4개여야 합니다.")
-        if not isinstance(answer, int) or not 1 <= answer <= 4:
+        if any(not isinstance(option, str) or not option.strip() for option in options):
+            raise ValueError("선택지는 비어 있지 않은 문자열이어야 합니다.")
+        if type(answer) is not int or not 1 <= answer <= 4:
             raise ValueError("정답은 1~4 사이 숫자여야 합니다.")
         return Quiz(data["question"], options, answer)
 
@@ -98,11 +100,14 @@ class QuizGame:
                 state = json.load(file)
             quizzes = [Quiz.from_dict(item) for item in state["quizzes"]]
             high_score = state["high_score"]
-            if not isinstance(high_score, int):
-                raise ValueError("최고 점수가 숫자가 아닙니다.")
+            if type(high_score) is not int or high_score < 0:
+                raise ValueError("최고 점수는 0 이상의 정수여야 합니다.")
+            has_played = state.get("has_played", high_score > 0)
+            if type(has_played) is not bool:
+                raise ValueError("게임 참여 기록은 True 또는 False여야 합니다.")
             self.quizzes = quizzes
             self.high_score = high_score
-            self.has_played = state.get("has_played", high_score > 0)
+            self.has_played = has_played
             print(
                 f"📂 저장된 데이터를 불러왔습니다. "
                 f"(퀴즈 {len(self.quizzes)}개, 최고점수 {self.high_score}점)"
