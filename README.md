@@ -120,7 +120,11 @@ pink-panda-python-git/
 ![점수 확인](screenshots/09-score.png)
 
 ## 🔧 Git 사용 기록
+### 📸 최신 Git 커밋 및 브랜치 그래프
 
+기능별 커밋, 브랜치 생성 및 병합, 저장소 복제와 협업 실습을 완료했습니다.
+
+![최신 Git 그래프](screenshots/12-git-log-final.png)
 
 - `init`, `add`, `commit`, `push`를 사용하여 기능 단위로 작업 내용을 기록했습니다.
 - `feature/input-validation` 브랜치에서 입력 검증과 구조 개선을 진행한 뒤 `main`에 병합했습니다.
