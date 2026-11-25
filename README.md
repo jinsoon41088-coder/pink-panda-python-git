@@ -43,16 +43,22 @@ python main.py
 - `Ctrl+C`, 입력 종료(EOF)가 발생해도 비정상 종료하지 않고 저장 후 종료합니다.
 - `state.json`이 없으면 기본 퀴즈로 시작하고, 손상되었으면 안내 후 기본 데이터로 복구합니다.
 - 퀴즈가 없을 때, 아직 퀴즈를 풀지 않았을 때도 안내 메시지를 보여줍니다.
+- 최고 점수가 0점이어도 게임 완료 기록을 저장합니다.
+- JSON 데이터의 정답 번호, 선택지, 최고 점수, 게임 참여 기록을 검증합니다.
+- 파일 저장에 실패하면 오류 메시지를 표시합니다.
+- 새로운 퀴즈를 저장하지 못하면 퀴즈 추가를 취소합니다.
 
 ## 🗂 파일 구조
 
-```
+```text
 pink-panda-python-git/
-├── main.py          # 게임 프로그램 (Quiz, QuizGame 클래스)
-├── state.json       # 퀴즈 목록과 최고 점수 저장 파일
-├── README.md        # 프로젝트 설명
-├── .gitignore
-└── screenshots/     # 실행 화면 스크린샷
+├── main.py             # 파이썬 퀴즈 게임
+├── state.json          # 퀴즈, 최고 점수, 참여 기록
+├── README.md           # 프로젝트 설명
+├── QUIZ_TEST_REPORT.md  # 프로그램 테스트 결과
+├── CLONE_TEST.txt      # Git 복제 및 협업 실습
+├── .gitignore          # Git 관리 제외 설정
+└── screenshots/        # 실행 화면 스크린샷
 ```
 
 **클래스 구조**
@@ -67,6 +73,7 @@ pink-panda-python-git/
 | 키 | 형식 | 설명 |
 |---|---|---|
 | `high_score` | 정수 | 최고 점수 (정답 1문제당 20점) |
+| `has_played` | 불리언 (true/false) | 퀴즈 완료 여부 및 0점 기록 구분 |
 | `quizzes` | 리스트 | 퀴즈 목록 |
 | `question` | 문자열 | 문제 |
 | `options` | 문자열 4개의 리스트 | 선택지 |
@@ -75,6 +82,7 @@ pink-panda-python-git/
 ```json
 {
     "high_score": 180,
+    "has_played": true,
     "quizzes": [
         {
             "question": "Python에서 정수를 나타내는 자료형은?",
@@ -120,3 +128,15 @@ pink-panda-python-git/
 - `git clone`으로 GitHub 저장소를 별도 폴더에 복제하는 실습을 완료했습니다.
 - 복제한 프로젝트에서 `CLONE_TEST.txt` 파일을 생성하고 `git add`, `git commit`, `git push`를 실행했습니다.
 - `git pull`을 실행하여 GitHub 원격 저장소의 변경 사항을 가져오는 실습을 완료했습니다.
+
+## 🧪 프로그램 테스트 결과
+
+- 잘못된 입력 처리 테스트: 16개 모두 통과
+- JSON 데이터 검증 테스트: 4개 모두 통과
+- 0점 기록 저장 및 불러오기 모의 테스트: 통과
+- 파일 저장 성공 및 실패 처리 테스트: 통과
+- 퀴즈 추가 실패 시 취소 테스트: 통과
+- Ctrl+C 및 EOF 종료 테스트: 통과
+- 기존 퀴즈 9개와 최고 점수 180점 유지 확인
+
+[📋 상세 테스트 결과 보고서 보기](QUIZ_TEST_REPORT.md)
