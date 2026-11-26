@@ -117,6 +117,10 @@ pink-panda-python-git/
 
 ## 📸 실행 화면
 
+**개발 환경 확인**
+
+![개발 환경](screenshots/11-dev-env.png)
+
 **메뉴와 잘못된 입력 처리**
 
 ![메뉴](screenshots/05-menu.png)
