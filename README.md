@@ -1,7 +1,7 @@
 # pink-panda-python-mission
 컴퓨터에게 명령 내리는 말(파이썬) 처음 배우기
 
-![파이썬 기초 학습](lecture2_banner.pnglecture2_banner.png)
+![파이썬 기초 학습](lecture2_banner.png)
 
 ![파이썬 기초 학습 인포그래픽](python-basic-new.png)
 ## 🐼 Python 학습 핵심 이미지
@@ -74,6 +74,8 @@ python main.py
 pink-panda-python-git/
 ├── main.py             # 파이썬 퀴즈 게임
 ├── state.json          # 퀴즈, 최고 점수, 참여 기록
+├── index.html          # 웹 퀴즈 게임 페이지
+├── web-quizzes.json    # 웹 퀴즈 관련 데이터
 ├── README.md           # 프로젝트 설명
 ├── QUIZ_TEST_REPORT.md  # 프로그램 테스트 결과
 ├── CLONE_TEST.txt      # Git 복제 및 협업 실습
@@ -140,6 +142,7 @@ pink-panda-python-git/
 ![점수 확인](screenshots/09-score.png)
 
 ## 🔧 Git 사용 기록
+
 ### 📸 최신 Git 커밋 및 브랜치 그래프
 
 기능별 커밋, 브랜치 생성 및 병합, 저장소 복제와 협업 실습을 완료했습니다.
@@ -152,6 +155,11 @@ pink-panda-python-git/
 - `git clone`으로 GitHub 저장소를 별도 폴더에 복제하는 실습을 완료했습니다.
 - 복제한 프로젝트에서 `CLONE_TEST.txt` 파일을 생성하고 `git add`, `git commit`, `git push`를 실행했습니다.
 - `git pull`을 실행하여 GitHub 원격 저장소의 변경 사항을 가져오는 실습을 완료했습니다.
+- `git checkout -b feature/checkout-practice`를 실행하여 새로운 브랜치를 생성하고 이동했습니다.
+- `git checkout main`을 실행하여 기존 main 브랜치로 복귀했습니다.
+- `git reflog`를 통해 브랜치 이동 기록을 확인했습니다.
+- `git rev-list --count HEAD` 명령어로 전체 커밋 50개를 확인했습니다. (2026-11-26 기준)
+- 기능별 커밋과 브랜치 병합 기록을 확인하여 미션의 Git 커밋 요구사항을 충족했습니다.
 
 ## 🧪 프로그램 테스트 결과
 
@@ -161,7 +169,7 @@ pink-panda-python-git/
 - 파일 저장 성공 및 실패 처리 테스트: 통과
 - 퀴즈 추가 실패 시 취소 테스트: 통과
 - Ctrl+C 및 EOF 종료 테스트: 통과
-- 기존 퀴즈 9개와 최고 점수 180점 유지 확인
+- 퀴즈 10개, 최고 점수 180점, 게임 참여 기록(True) 유지 확인
 
 [📋 상세 테스트 결과 보고서 보기](QUIZ_TEST_REPORT.md)
 
@@ -175,5 +183,28 @@ pink-panda-python-git/
 - 새로운 퀴즈 저장 및 유지 테스트: PASS
 
 추가 테스트 6개를 모두 통과하였으며,
-기존 퀴즈 9문제와 최고 점수 180점이
+당시 퀴즈 9문제와 최고 점수 180점이
 정상적으로 유지되는 것을 확인하였습니다.
+
+### 최신 데이터 유지 확인 (2026-11-26)
+
+- 등록된 퀴즈 개수: 10개
+- 최고 점수: 180점
+- 게임 참여 기록: True
+- 데이터 저장 및 불러오기: PASS
+- 기존 퀴즈 개수 및 최고 점수 유지: PASS
+
+### 최신 예외 처리 테스트 결과 (2026-11-26)
+
+- 저장 파일이 없는 경우 기본 퀴즈 5개 자동 생성: PASS
+- 손상된 JSON 파일의 기본 데이터 복구: PASS
+- 파일 읽기 실패 시 기본 데이터 사용: PASS
+- 파일 읽기 실패 시 게임 참여 기록 초기화: PASS
+- 파일 저장 실패 시 오류 메시지 출력: PASS
+- 파일 저장 실패 시 프로그램 비정상 종료 방지: PASS
+- 임시 저장 파일의 데이터 저장 및 불러오기: PASS
+- Git Clone 후 프로그램 실행: PASS
+- Ctrl+C 입력 중단 시 안전한 종료: PASS
+
+기존 퀴즈 10개와 최고 점수 180점을 유지하면서
+예외 처리 및 데이터 저장 기능을 검증했습니다.
