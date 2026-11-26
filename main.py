@@ -119,6 +119,7 @@ class QuizGame:
             print(f"⚠️ 파일을 읽을 수 없어 기본 데이터를 사용합니다. ({error})")
             self.quizzes = [Quiz.from_dict(item) for item in DEFAULT_QUIZZES]
             self.high_score = 0
+            self.has_played = False
 
     def use_default_data(self):
         """기본 퀴즈로 초기화하고 파일에 저장한다."""
